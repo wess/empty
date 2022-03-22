@@ -1,17 +1,12 @@
 name: Empty
 on: [push]
 jobs:
-  Explore-GitHub-Actions:
+  Appwrite-CLI:
     runs-on: ubuntu-latest
     steps:
-      - run: echo "🎉 The job was automatically triggered by a ${{ github.event_name }} event."
-      - run: echo "🐧 This job is now running on a ${{ runner.os }} server hosted by GitHub!"
-      - run: echo "🔎 The name of your branch is ${{ github.ref }} and your repository is ${{ github.repository }}."
-      - name: Check out repository code
-        uses: actions/checkout@v2
-      - run: echo "💡 The ${{ github.repository }} repository has been cloned to the runner."
-      - run: echo "🖥️ The workflow is now ready to test your code on the runner."
-      - name: List files in the repository
-        run: |
-          ls ${{ github.workspace }}
-      - run: echo "🍏 This job's status is ${{ job.status }}."
+      - uses: appwrite/setup-for-actions@feat-update-for-new-cli
+        with:
+          endpoint: 'https://api.devpipe.com/v1'
+          project: '6231ed9510256581309b'
+          key: '3b87ab6e18709ae124cc1dd46686ff389c50b38d362269900d8e0d832227ccc8bb49ba5ea6af2d11934523ed5260b455d316aaeb9bc23b329b2d7287e7d6769d4e691b5b0cffa4486db432a1477a76af18fbecf931365e924121dfa568eda3146f5dac04c2609e5d48695fee1de9613686393e3d84a6b03a063dec40e632b1f5'          
+      - run: appwrite --version
